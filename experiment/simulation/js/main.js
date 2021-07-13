@@ -461,12 +461,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		return step;
 	};
 
-	function curvedArea(ctx, e, gradX, gradY)
-	{
-		ctx.bezierCurveTo(e[0], e[1] += gradY, e[0] += gradX, e[1] += gradY, e[0] += gradX, e[1]);
-		ctx.bezierCurveTo(e[0] += gradX, e[1], e[0] += gradX, e[1] -= gradY, e[0], e[1] -= gradY);
-	};
-
 	const canvas = document.getElementById("main");
 	canvas.width = 840;
 	canvas.height = 400;
