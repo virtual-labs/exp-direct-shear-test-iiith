@@ -51,12 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		{
 			if(step === 2)
 			{
-				document.getElementById("output1").innerHTML = "Mass of ring = " + String(randomNumber(3500, 3800)) + " g";
-			}
-
-			else if(step === 4)
-			{
-				objs['soil'] = new ring(obj.height, obj.width, obj.pos[0], obj.pos[1], obj.color);
+				document.getElementById("output1").innerHTML = "Mass of mould = " + String(randomNumber(3500, 3800)) + " g";
 			}
 
 			else if(step === enabled.length - 2)
@@ -97,145 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		ctx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
 	};
 
-	class loader {
-		constructor(height, width, radius, x, y) {
-			this.height = height;
-			this.width = width;
-			this.pos = [x, y];
-			this.marginHoriz = 0.3 * this.height;
-			this.radius = radius;
-			this.angle = 0;
-		};
-
-		draw(ctx) {
-			const marginVert = 0.1 * this.width, heightVert = 0.85 * this.height, widthVert = 0.05 * this.width, heightHoriz = 0.1 * this.height;
-			ctx.fillStyle = data.colors.gray;
-
-			ctx.beginPath();
-			ctx.rect(this.pos[0] + marginVert, this.pos[1], widthVert, heightVert);
-			ctx.rect(this.pos[0] + this.width - marginVert, this.pos[1], -widthVert, heightVert);
-			ctx.rect(this.pos[0], this.pos[1] + heightVert, this.width, this.height - heightVert);
-			ctx.rect(this.pos[0], this.pos[1] + heightVert, this.width, this.height - heightVert);
-			ctx.rect(this.pos[0], this.pos[1] + this.marginHoriz, this.width, heightHoriz);
-			ctx.fill();
-			ctx.stroke();
-
-			ctx.fillStyle = "white";
-			ctx.beginPath();
-			ctx.arc(this.pos[0] + this.width / 2, this.pos[1] + this.radius, this.radius, 0, 2 * Math.PI);
-
-			canvas_arrow(ctx, this.pos[0] + this.width / 2, this.pos[1] + this.radius, this.pos[0] + this.width / 2 + this.radius * Math.sin(this.angle), this.pos[1] + this.radius * (1 - Math.cos(this.angle)));
-			//ctx.moveTo(this.pos[0] + this.width / 2, this.pos[1] + this.radius);
-			//ctx.lineTo(this.pos[0] + this.width / 2 + this.radius * Math.sin(this.angle), this.pos[1] + this.radius * (1 - Math.cos(this.angle)));
-
-			ctx.moveTo(this.pos[0] + this.width / 2, this.pos[1] + 2 * this.radius);
-			ctx.lineTo(this.pos[0] + this.width / 2, this.pos[1] + this.marginHoriz);
-			ctx.fill();
-			ctx.stroke();
-		};
-
-		applyLoad(change) {
-			this.marginHoriz += change;
-			this.angle += 5 * change * Math.PI / 180;
-		};
-	};
-
-	class loadingCap {
-		constructor(height, width, x, y) {
-			this.height = height;
-			this.width = width;
-			this.pos = [x, y];
-		};
-
-		draw(ctx) {
-			ctx.fillStyle = data.colors.gray;
-			const gradX = 30, gradY = 20;
-
-			ctx.beginPath();
-			ctx.moveTo(this.pos[0], this.pos[1] + this.height);
-			ctx.lineTo(this.pos[0] + this.width, this.pos[1] + this.height);
-			ctx.lineTo(this.pos[0] + this.width, this.pos[1] + gradY);
-			ctx.lineTo(this.pos[0] + this.width - gradX, this.pos[1]);
-			ctx.lineTo(this.pos[0] + gradX, this.pos[1]);
-			ctx.lineTo(this.pos[0], this.pos[1] + gradY);
-			ctx.lineTo(this.pos[0], this.pos[1] + this.height);
-			ctx.fill();
-			ctx.stroke();
-		};
-
-		fill(change) {
-			if(this.waterHeight >= this.height - 10)
-			{
-				return 1;
-			}
-
-			this.waterHeight += change;
-			return 0;
-		};
-	};
-
-	class waterBath {
-		constructor(height, width, x, y) {
-			this.height = height;
-			this.width = width;
-			this.pos = [x, y];
-			this.waterHeight = 0;
-		};
-
-		draw(ctx) {
-			ctx.fillStyle = data.colors.blue;
-			ctx.beginPath();
-			ctx.rect(this.pos[0], this.pos[1] + (this.height - this.waterHeight), this.width, this.waterHeight);
-			ctx.closePath();
-			ctx.fill();
-
-			ctx.beginPath();
-			ctx.moveTo(this.pos[0], this.pos[1]);
-			ctx.lineTo(this.pos[0], this.pos[1] + this.height);
-			ctx.lineTo(this.pos[0] + this.width, this.pos[1] + this.height);
-			ctx.lineTo(this.pos[0] + this.width, this.pos[1]);
-			ctx.stroke();
-		};
-
-		fill(change) {
-			if(this.waterHeight >= this.height - 10)
-			{
-				return 1;
-			}
-
-			this.waterHeight += change;
-			return 0;
-		};
-	};
-
-	class ring {
-		constructor(height, width, x, y, color) {
-			this.height = height;
-			this.width = width;
-			this.pos = [x, y];
-			this.color = color;
-		};
-
-		draw(ctx) {
-			ctx.fillStyle = this.color;
-
-			const e1 = [this.pos[0] + this.width, this.pos[1]], e2 = [...this.pos];
-			const gradX = (e1[0] - e2[0]) / -4, gradY = 5;
-
-			ctx.beginPath();
-			ctx.moveTo(e2[0], e2[1]);
-			curvedArea(ctx, e2, -1 * gradX, -1 * gradY);
-			curvedArea(ctx, e1, gradX, gradY);
-			ctx.lineTo(this.pos[0], this.pos[1] + this.height);
-			ctx.lineTo(this.pos[0] + this.width, this.pos[1] + this.height);
-			ctx.lineTo(this.pos[0] + this.width, this.pos[1]);
-			curvedArea(ctx, [this.pos[0] + this.width, this.pos[1]], gradX, gradY);
-			ctx.closePath();
-			ctx.fill();
-			ctx.stroke();
-		};
-	};
-
 	class rect {
 		constructor(height, width, x, y, color) {
 			this.height = height;
@@ -253,25 +109,90 @@ document.addEventListener('DOMContentLoaded', function() {
 			ctx.stroke();
 		};
 
-		shrink(change) {
-			this.height -= change;
+		heightChange(change, lim) {
+			if(this.height === lim)
+			{
+				return 1;
+			}
+
+			this.height += change;
+			return 0;
 		};
 	};
 
-	class stones {
-		constructor(height, width, x, y, gap) {
+	class multiRect {
+		constructor(height, width, x, y, gap, color) {
 			this.height = height;
 			this.width = width;
 			this.pos = [x, y];
-			this.gap = gap;
+			this.gap = [...gap];
+			this.color = color;
 			
-			this.stonesArr = [new rect(this.height, this.width, this.pos[0], this.pos[1], "black"), new rect(this.height, this.width, this.pos[0], this.pos[1] + this.gap, "black")];
+			this.arr = [new rect(this.height, this.width, this.pos[0], this.pos[1], color), new rect(this.height, this.width, this.pos[0] + this.gap[0], this.pos[1] + this.height + this.gap[1], color)];
 		};
 
 		draw(ctx) {
-			this.stonesArr.forEach((stone, ind) => {
-				stone.draw(ctx);
+			this.arr.forEach((elem, ind) => {
+				elem.draw(ctx);
 			});
+		};
+	};
+
+	class shearDevice {
+		constructor(height, width, radius, x, y) {
+			this.height = height;
+			this.width = width;
+			this.pos = [x, y];
+			this.radius = radius;
+			this.angle = 0;
+			this.baseStart = 0.8 * this.width;
+			this.endMargin = 0.1 * this.width; 
+		};
+
+		draw(ctx) {
+			const boxWidth = 0.1 * this.width, pipeWidth = 0.1 * this.height, baseWidth = 0.025 * this.width, lastSeg  = 0.25 * this.width;
+
+			ctx.fillStyle = "black";
+			ctx.beginPath();
+			ctx.rect(this.pos[0], this.pos[1], boxWidth, this.height);
+			ctx.rect(this.pos[0] + this.width - lastSeg, this.pos[1], boxWidth, this.height);
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.fillStyle = data.colors.gray;
+			ctx.rect(this.pos[0] + boxWidth, this.pos[1] + this.height / 2 - pipeWidth / 2, this.width - boxWidth - this.baseStart, pipeWidth);
+			ctx.rect(this.pos[0] + this.width - this.baseStart, this.pos[1], baseWidth, this.height);
+			ctx.rect(this.pos[0] + this.width - this.baseStart + baseWidth, this.pos[1] + this.height - baseWidth, this.baseStart - this.endMargin - 2 * baseWidth - lastSeg, baseWidth);
+			ctx.rect(this.pos[0] + this.width - this.endMargin - baseWidth - lastSeg, this.pos[1], baseWidth, this.height);
+
+			ctx.rect(this.pos[0] + this.width - this.baseStart + baseWidth, this.pos[1] + 60, 25, 45);
+			ctx.rect(this.pos[0] + this.width - this.endMargin - baseWidth - lastSeg, this.pos[1] + 60, -15, 45);
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.fillStyle = "white";
+			ctx.arc(this.pos[0] + this.width - this.radius, this.pos[1] + this.height / 2, this.radius, 0, 2 * Math.PI);
+			canvas_arrow(ctx, this.pos[0] + this.width - this.radius, this.pos[1] + this.height / 2, this.pos[0] + this.width + this.radius * (Math.cos(this.angle) - 1), this.pos[1] + this.height / 2 + this.radius * Math.sin(this.angle));
+			ctx.moveTo(this.pos[0] + this.width - 2 * this.radius, this.pos[1] + this.height / 2);
+			ctx.lineTo(this.pos[0] + this.width - lastSeg + boxWidth, this.pos[1] + this.height / 2);
+			ctx.fill();
+			ctx.stroke();
+		};
+
+		shear(change) {
+			if(this.endMargin <= 25)
+			{
+				return 1;
+			}
+
+			this.angle += 5 * change * Math.PI / 180;
+			this.baseStart -= change;
+			this.endMargin -= change;
+			return 0;
 		};
 	};
 
@@ -287,6 +208,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		draw(ctx) {
 			ctx.drawImage(objs['weight'].img, objs['weight'].pos[0], objs['weight'].pos[1], objs['weight'].width, objs['weight'].height);
+		};
+	};
+
+	class shearBox {
+		constructor(height, width, x, y) {
+			this.height = height;
+			this.width = width;
+			this.pos = [x, y];
+			this.gap = [0, 0];
+		};
+
+		draw(ctx) {
+			const margin = 20, handleWidth = 20, stonesHeight = 20;
+			new multiRect(this.height / 2, this.width, this.pos[0], this.pos[1], this.gap, data.colors.yellow).draw(ctx);
+			new multiRect(stonesHeight, this.width - 2 * margin, this.pos[0] + margin, this.pos[1], [this.gap[0], this.height - 2 * stonesHeight], data.colors.lightBlue).draw(ctx);
+
+			ctx.fillStyle = data.colors.gray;
+			ctx.beginPath();
+			ctx.moveTo(this.pos[0] + this.width - margin, this.pos[1]);
+			ctx.lineTo(this.pos[0] + this.width - margin, this.pos[1] - this.height * 0.5);
+			ctx.lineTo(this.pos[0] + 1.6 * this.width - margin, this.pos[1] - this.height * 0.5);
+			ctx.lineTo(this.pos[0] + 1.6 * this.width - margin, this.pos[1] + this.height / 2);
+			ctx.lineTo(this.pos[0] + 1.6 * this.width - margin - handleWidth, this.pos[1] + this.height / 2);
+			ctx.lineTo(this.pos[0] + 1.6 * this.width - margin - handleWidth, this.pos[1] - this.height * 0.5 + handleWidth);
+			ctx.lineTo(this.pos[0] + this.width, this.pos[1] - this.height * 0.5 + handleWidth);
+			ctx.lineTo(this.pos[0] + this.width, this.pos[1]);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+		};
+
+		shear(change) {
+			this.gap[0] += change;
+		};
+	};
+
+	class soils {
+		constructor(num, currSoil) {
+			this.height = currSoil.height / 2;
+			this.width = currSoil.width;
+			this.pos = [...currSoil.pos];
+			this.soils = [];
+
+			for(let i = 0; i < num; i += 1)
+			{
+				this.soils.push(new rect(this.height, this.width, this.pos[0], this.pos[1] + this.height * i, currSoil.color));
+			}
+		};
+
+		draw(ctx) {
+			this.soils.forEach((soil, idx) => {
+				soil.draw(ctx);
+			});
+		};
+
+		shear(change) {
+			this.soils[this.soils.length - 1].pos[0] += change;
 		};
 	};
 
@@ -370,22 +348,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function init()
 	{
-		fps = 150;
-		document.getElementById("output1").innerHTML = "Mass of ring = ____ g";
+		document.getElementById("output1").innerHTML = "Mass of mould = ____ g";
 		document.getElementById("output2").innerHTML = "Volume of soil = ____ cm" + "3".sup();
 
 		objs = {
-			"loader": new loader(330, 270, 30, 480, 50),
+			"shearDevice": new shearDevice(120, 540, 20, 150, 260),
 			"weight": new weight(270, 240, 90, 190),
-			"water": new waterBath(110, 170, 530, 215),
-			"ring": new ring(50, 150, 600, 330, data.colors.gray),
-			"soil": new rect(50, 140, 610, 330, data.colors.soilBrown),
-			"stones": new stones(20, 140, 140, 190, 70),
-			"loadingCap": new loadingCap(50, 140, 545, 185),
+			"shearBox": new shearBox(90, 170, 125, 190),
+			"mould": new rect(50, 150, 600, 330, data.colors.gray),
+			"soil": new rect(0, 130, 145, 260, data.colors.soilBrown),
 		};
 		keys = [];
 
-		enabled = [["weight"], ["weight", "ring"], ["weight", "ring"], ["weight", "ring", "soil"], ["weight", "ring", "soil"], ["ring", "soil", "stones"], ["ring", "soil", "stones", "loader"], ["ring", "soil", "stones", "loader", "water"], ["ring", "soil", "stones", "loader", "water"], ["ring", "soil", "stones", "loader", "water"], ["ring", "soil", "stones", "loader", "water", "loadingCap"], ["ring", "soil", "stones", "loader", "water", "loadingCap"], [], []];
+		enabled = [["weight"], ["weight", "mould"], ["weight", "mould"], ["weight", "mould", "soil"], ["soil", "shearBox"], ["soil", "shearBox", "shearDevice"], ["soil", "shearBox", "shearDevice"], ["soil", "shearBox", "shearDevice"], [], []];
 		step = 0;
 		translate = [0, 0];
 		lim = [-1, -1];
@@ -443,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		keys.forEach(function(val, ind, arr) {
 			if(canvasPos[0] >= objs[val].pos[0] - errMargin && canvasPos[0] <= objs[val].pos[0] + objs[val].width + errMargin && canvasPos[1] >= objs[val].pos[1] - errMargin && canvasPos[1] <= objs[val].pos[1] + objs[val].height + errMargin)
 			{
-				if(step === 2 && val === "ring")
+				if(step === 2 && val === "mould")
 				{
 					hover = true;
 					translate[0] = -5;
@@ -452,38 +427,23 @@ document.addEventListener('DOMContentLoaded', function() {
 					lim[1] = 210;
 				}
 
-				else if(step === 4 && val === "soil")
+				else if(step === 6 && val === "shearBox")
 				{
 					hover = true;
-					translate[0] = -5;
-					translate[1] = -5;
-					lim[0] = 140;
-					lim[1] = 210;
-				}
-
-				else if(step === 8 && val === "soil")
-				{
-					hover = true;
-					translate[0] = 5;
-					translate[1] = 5;
-					lim[0] = objs['water'].pos[0] + objs['water'].width / 2 - objs['ring'].width / 2;
-					lim[1] = objs['water'].pos[1] + objs['water'].height - objs['stones'].height - objs['ring'].height;
-				}
-
-				else if(step === 9 && val === "water")
-				{
-					hover = true;
+					translate[0] = 1;
 					translate[1] = 1;
+					lim[0] = 300;
+					lim[1] = 365 - objs['shearBox'].height;
 				}
 
-				else if(step === 11 && val === "loadingCap")
+				else if(step === 7 && val === "shearBox")
 				{
 					hover = true;
-					translate[1] = 1;
-					lim[1] = 210;
+					translate[0] = 1;
 					if(flag)
 					{
-						fps = 30;
+						const temp = new soils(2, objs['soil']);
+						objs['soil'] = temp;
 					}
 				}
 			}
@@ -514,25 +474,21 @@ document.addEventListener('DOMContentLoaded', function() {
 	const ctx = canvas.getContext("2d");
 	ctx.lineWidth = 3;
 
-	const border = "black", lineWidth = 3;
+	const border = "black", lineWidth = 3, fps = 150;
 	const msgs = [
 		"Click on 'Weighing Machine' in the apparatus menu to add a weighing machine to the workspace.", 
-		"Click on 'Consolidation Ring' in the apparatus menu to add a consolidation ring to the workspace.",
-		"Click on the ring to move it to the weighing machine and weigh it.",
-		"Click on 'Soil Sample' in the apparatus menu to add a soil sample to the workspace.",
-		"Click on the soil sample to move it to the ring and weigh them together.",
-		"Click on 'Porous Stones' in the apparatus menu to add porous stones to the top and bottom of the ring.",
-		"Click on 'Loading Device' in the apparatus menu to add a loading device to the workspace.",
-		"Click on 'Water Bath' in the apparatus menu to add a water bath to the loading device.",
-		"Click on the soil to move it along with the ring and stones to the water bath.",
-		"Click on the water bath to fill it with water.",
-		"Click on 'Loading Cap' in the apparatus menu to add a loading cap to the setup in the water bath.",
-		"Click on the loading cap to apply a load/force on the soil.",
+		"Click on 'Mould' in the apparatus menu to add a mould to the workspace.",
+		"Click on the mould to move it to the weighing machine and weigh it.",
+		"Click on 'Soil Sample' in the apparatus menu to add a soil sample to the mould and weigh them together .",
+		"Click on 'Shear Box' in the apparatus menu to add an assembled shear box(including blue porous stones) with the soil sample in it.",
+		"Click on 'Shear Device' in the apparatus menu to add a shear device to the workspace.",
+		"Click on the shear box to move it to the shear device.",
+		"Click on the shear box to start the device and apply a force to shear the soil.",
 		"Click the restart button to perform the experiment again.",
 	];
 
 	let soilVol;
-	let step, translate, lim, objs, keys, enabled, small, fps;
+	let step, translate, lim, objs, keys, enabled, small;
 	init();
 
 	const tableData = [
@@ -547,16 +503,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	objNames.forEach(function(elem, ind) {
 		const obj = document.getElementById(elem);
 		obj.addEventListener('click', function(event) {
-			if(elem === "stones")
+			if(elem === "shearBox")
 			{
-				objs['soil'] = new rect(objs['soil'].height, objs['soil'].width, objs['soil'].pos[0], objs['soil'].pos[1], objs['soil'].color);
-				objs['ring'] = new rect(objs['ring'].height, objs['ring'].width, objs['ring'].pos[0], objs['ring'].pos[1], objs['ring'].color);
 				keys = keys.filter(function(val, index) {
-					return val !== "weight";
+					return val !== "weight" && val !== "mould";
 				});
 			}
 
 			keys.push(elem);
+
+			if(elem === "soil")
+			{
+				return;
+			}
+
 			step += 1;
 		});
 	});
@@ -623,60 +583,46 @@ document.addEventListener('DOMContentLoaded', function() {
 			document.getElementById("main").style.pointerEvents = 'auto';
 		}
 
+		if(step === 3 && keys.includes("soil"))
+		{
+			translate[1] = -1;
+			updatePos(objs['soil'], translate);
+			step += objs['soil'].heightChange(-translate[1], 50);
+			translate[1] = 0;
+		}
+
 		if(translate[0] !== 0 || translate[1] !== 0)
 		{
 			let temp = step;
-			const soilMoves = [4, 8, 11], ringMoves = [2, 8], stoneMoves = [8, 11], loadingCapMoves = [11];
+			const soilMoves = [6], mouldMoves = [2], shearBoxMoves = [6];
 
-			if(step === 9)
+			if(step === 7)
 			{
-				temp += objs['water'].fill(translate[1]);
-				if(temp !== step)
-				{
-					translate[1] = 0;
-				}
+				objs['soil'].shear(translate[0]);
+				objs['shearBox'].shear(translate[0]);
+				temp += objs['shearDevice'].shear(translate[0]);
 			}
 
-			if(stoneMoves.includes(step))
+			if(mouldMoves.includes(step))
 			{
-				updatePos(objs['stones'], translate);
-				updatePos(objs['stones'].stonesArr[0], translate);
-				if(!loadingCapMoves.includes(step))
-				{
-					updatePos(objs['stones'].stonesArr[1], translate);
-					if(!ringMoves.includes(step))
-					{
-						temp = limCheck(objs['stones'], translate, lim, step);
-					}
-				}
+				updatePos(objs['mould'], translate);
+				temp = limCheck(objs['mould'], translate, lim, step);
 			}
 
 			if(soilMoves.includes(step))
 			{
 				updatePos(objs['soil'], translate);
 
-				if(loadingCapMoves.includes(step))
-				{
-					objs['soil'].shrink(translate[1]);
-					objs['loader'].applyLoad(translate[1]);
-				}
-
-				else if(!ringMoves.includes(step))
+				if(!shearBoxMoves.includes(step))
 				{
 					temp = limCheck(objs['soil'], translate, lim, step);
 				}
 			}
 
-			if(ringMoves.includes(step))
+			if(shearBoxMoves.includes(step))
 			{
-				updatePos(objs['ring'], translate);
-				temp = limCheck(objs['ring'], translate, lim, step);
-			}
-
-			if(loadingCapMoves.includes(step))
-			{
-				updatePos(objs['loadingCap'], translate);
-				temp = limCheck(objs['loadingCap'], translate, lim, step);
+				updatePos(objs['shearBox'], translate);
+				temp = limCheck(objs['shearBox'], translate, lim, step);
 			}
 
 			step = temp;
