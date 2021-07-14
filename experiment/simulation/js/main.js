@@ -352,11 +352,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.getElementById("output2").innerHTML = "Volume of soil = ____ cm" + "3".sup();
 
 		objs = {
-			"shearDevice": new shearDevice(120, 540, 20, 150, 260),
-			"weight": new weight(270, 240, 90, 190),
-			"shearBox": new shearBox(90, 170, 125, 190),
-			"mould": new rect(50, 150, 600, 330, data.colors.gray),
-			"soil": new rect(0, 130, 145, 260, data.colors.soilBrown),
+			"shearDevice": new shearDevice(120, 540, 20, 260, 260),
+			"weight": new weight(270, 240, 40, 190),
+			"shearBox": new shearBox(90, 170, 75, 190),
+			"mould": new rect(50, 150, 650, 330, data.colors.gray),
+			"soil": new rect(0, 130, 95, 260, data.colors.soilBrown),
 		};
 		keys = [];
 
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					hover = true;
 					translate[0] = -5;
 					translate[1] = -5;
-					lim[0] = 135;
+					lim[0] = 85;
 					lim[1] = 210;
 				}
 
@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					hover = true;
 					translate[0] = 1;
 					translate[1] = 1;
-					lim[0] = 300;
+					lim[0] = 410;
 					lim[1] = 365 - objs['shearBox'].height;
 				}
 
