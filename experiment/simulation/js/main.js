@@ -51,7 +51,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		{
 			if(step === 2)
 			{
-				document.getElementById("output1").innerHTML = "Mass of mould = " + String(randomNumber(3500, 3800)) + " g";
+				document.getElementById("output1").innerHTML = "Mass of mould = " + String(720) + " g";
+			}
+
+			else if(step === 3)
+			{
+				document.getElementById("output2").innerHTML = "Mass of soil = " + String(280) + " g";
+			}
+
+			else if(step === 4)
+			{
+				diameter = randomNumber(6, 7);
+				area = (Math.PI * diameter * diameter / 4).toFixed(2);
+				document.getElementById("output3").innerHTML = "Shear Box Diameter = " + String(diameter) + " cm";
+				document.getElementById("output4").innerHTML = "Shear Box Area, A = " + String(area) + " cm" + "2".sup();
 			}
 
 			else if(step === enabled.length - 2)
@@ -349,7 +362,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	function init()
 	{
 		document.getElementById("output1").innerHTML = "Mass of mould = ____ g";
-		document.getElementById("output2").innerHTML = "Volume of soil = ____ cm" + "3".sup();
+		document.getElementById("output2").innerHTML = "Mass of soil = ____ g";
+		document.getElementById("output3").innerHTML = "Shear Box Diameter = ____ cm";
+		document.getElementById("output4").innerHTML = "Shear Box Area, A = ____ cm" + "2".sup();
 
 		objs = {
 			"shearDevice": new shearDevice(120, 540, 20, 260, 260),
@@ -481,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		"Click the restart button to perform the experiment again.",
 	];
 
-	let soilVol;
+	let diameter, area;
 	let step, translate, lim, objs, keys, enabled, small;
 	init();
 
