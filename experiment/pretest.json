@@ -10,10 +10,10 @@
 				"d": "Any soil"
 			},
 			"explanations": {
-				"a": "Only the drained or slow shear test on sand are conducted using this test. The draining of cohesive soils is difficult.",
+				"a": "This test can only be performed on sand. The draining of cohesive soils is difficult.",
 				"b": "Only the drained or slow shear test on sand may be carried out using box shear test apparatus. Hence it is applicable for cohesion less soils.",
-				"c": "Only the drained or slow shear test on sand are conducted using this test. The draining of clayey soils is difficult.",
-				"d": "Only the drained or slow shear test on sand are conducted using this test."
+				"c": "This test can only be performed on sand. The draining of clayey soils is difficult.",
+				"d": "This test can only be performed on sand. It is difficult to drain any other soils."
 			},
 			"difficulty": "beginner",
 			"correctAnswer": "b"
@@ -45,8 +45,8 @@
 			},
 			"explanations": {
 				"a": "It is called so as it makes use of a shear box.",
-				"b": "",
-				"c": "",
+				"b": "This is a completely different experiment.",
+				"c": "This is a completely different experiment.",
 				"d": "One of the other options does contain the right answer."
 			},
 			"difficulty": "beginner",
