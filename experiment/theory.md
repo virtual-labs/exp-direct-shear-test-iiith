@@ -4,7 +4,7 @@ Shear strength of a soil is the maximum resistance to shearing stress at failure
 
 Coulomb has represented the shear strength of soil by the equation:
 S = C + σ * tan θ
-> Where, S = Shear strength of soil = Shear stress at failure, C = Cohesion intercepts, σ = Total normal stress on the failure plane, θ = Angle of internal friction or shearing resistance.
+> Where, S = Shear strength of soil = Shear stress at failure, C = Cohesion intercept, σ = Total normal stress on the failure plane, θ = Angle of internal friction or shearing resistance.
 
 The graphical representation of the above equation gives a straight line called the Failure envelope. The parameters c and θ are not constant for a given type of soil but depend on its degree of saturation, drainage conditions and the condition of laboratory testing. 
 
