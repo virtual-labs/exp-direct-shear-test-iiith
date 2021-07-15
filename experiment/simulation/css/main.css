@@ -16,6 +16,11 @@
 	min-width: 100%;
 }
 
+.plot {
+	display: inline-block;
+	margin-top: 5%;
+}
+
 .apparatus {
 	order: 1;
 }

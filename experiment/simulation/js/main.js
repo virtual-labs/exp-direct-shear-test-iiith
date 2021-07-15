@@ -8,30 +8,40 @@ document.addEventListener('DOMContentLoaded', function() {
 	restartButton.addEventListener('click', function() {restart();});
 
 	function randomNumber(min, max) {
-		return Number((Math.random() * (max - min + 1) + min).toFixed(2));
+		return Number((Math.random() * (max - min) + min).toFixed(2));
+	};
+
+	function finish(step) {
+		if(!flag && step === enabled.length - 1)
+		{
+			flag = true;
+			const retTrace = logic(tableData);
+			generateTableHead(table, Object.keys(tableData[0]));
+			generateTable(table, tableData);
+			drawGraph([retTrace], ['Horizontal Displacement (cm)', 'Horizontal Shear Stress (N/cm<sup>2</sup>)'], 'plot');
+			drawGraph([trace(normalStress, [Math.max(...retTrace.y), randomNumber(2.9, 3.3), randomNumber(4.5, 4.9)], 'Stress Graph', true), trace(normalStress, normalStress, 'Ideal Stress Graph')], ['Normal Stress (N/cm<sup>2</sup>)', 'Shear Stress (N/cm<sup>2</sup>)'], 'stressPlot');
+
+			document.getElementById("main").style.display = 'none';
+			document.getElementById("graph").style.display = 'inline-block';
+
+			document.getElementById("apparatus").style.display = 'none';
+			document.getElementById("observations").style.width = '40%';
+			if(small)
+			{
+				document.getElementById("observations").style.width = '85%';
+			}
+		}
 	};
 
 	function logic(tableData)
 	{
-		const waterContents = [randomNumber(7, 9), randomNumber(10, 12), randomNumber(12, 14), randomNumber(15, 16), randomNumber(17, 18)], soilMasses = [randomNumber(1500, 1600), randomNumber(1750, 1800), randomNumber(2150, 2200), randomNumber(2100, 2150), randomNumber(2000, 2150),];
-		let xVals = [], yVals = [], maxIx = 0;
+		let xVals = [], yVals = [];
 		tableData.forEach(function(row, index) {
-			row['Soil Sample No.'] = index + 1;
-			row['Water Content(%)'] = Number(waterContents[index]);
-			row['Wet Compacted Soil Mass(g)'] = Number(soilMasses[index]);
-			row['Wet Density(g/cc)'] = (soilMasses[index] / soilVol).toFixed(2);
-			row['Dry Density(g/cc)'] = Number((row['Wet Density(g/cc)'] / (1 + waterContents[index] / 100)).toFixed(2));
-			xVals.push(row['Water Content(%)']);
-			yVals.push(row['Dry Density(g/cc)']);
-
-			if(yVals[maxIx] < yVals[index])
-			{
-				maxIx = index;
-			}
+			row['Shear Stress (N/cm<sup>2</sup>)'] = Number((row['Horizontal Shear Force (N)'] / area).toFixed(2));
+			xVals.push(row['Horizontal Displacement (cm)']);
+			yVals.push(row['Shear Stress (N/cm<sup>2</sup>)']);
 		});
 
-		document.getElementById('optWater').innerHTML = "Optimum Moisture Content = " + String(xVals[maxIx]) + " %";
-		document.getElementById('maxDensity').innerHTML = "Maximum Dry Density = " + String(yVals[maxIx]) + " g/cm<sup>3</sup>";
 		return trace(xVals, yVals, 'Graph');
 	};
 
@@ -52,37 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			if(step === 2)
 			{
 				document.getElementById("output1").innerHTML = "Mass of mould = " + String(720) + " g";
-			}
-
-			else if(step === 3)
-			{
-				document.getElementById("output2").innerHTML = "Mass of soil = " + String(280) + " g";
-			}
-
-			else if(step === 4)
-			{
-				diameter = randomNumber(6, 7);
-				area = (Math.PI * diameter * diameter / 4).toFixed(2);
-				document.getElementById("output3").innerHTML = "Shear Box Diameter = " + String(diameter) + " cm";
-				document.getElementById("output4").innerHTML = "Shear Box Area, A = " + String(area) + " cm" + "2".sup();
-			}
-
-			else if(step === enabled.length - 2)
-			{
-				const retTrace = logic(tableData);
-				generateTableHead(table, Object.keys(tableData[0]));
-				generateTable(table, tableData);
-				drawGraph([retTrace], ['Water Content(%)', 'Dry Density(g/cc)'], 'plot');
-
-				document.getElementById("main").style.display = 'none';
-				document.getElementById("graph").style.display = 'inline-block';
-
-				document.getElementById("apparatus").style.display = 'none';
-				document.getElementById("observations").style.width = '40%';
-				if(small)
-				{
-					document.getElementById("observations").style.width = '85%';
-				}
 			}
 			return step + 1;
 		}
@@ -281,32 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		};
 	};
 
-	function lineFromPoints(p, q)
+	function trace(xVals, yVals, name, flag=false)
 	{
-		const m = (q[1] - p[1]) / (q[0] - p[0]), c = p[1] - m * p[0];
-		const xVals = math.range(p[0], q[0], 1).toArray();
-		const yVals = xVals.map(function (x) {
-			return Number((m * x + c).toFixed(2));
-		});
-
-		return [xVals, yVals];
-	};
-
-	function trace(Xaxis, Yaxis, name)
-	{
-		let xVals = [], yVals = [];
-
-		Xaxis.forEach(function(xcoord, i) {
-			let xTemp, yTemp;
-			if(i !== Xaxis.length - 1)
-			{
-				[xTemp, yTemp] = lineFromPoints([Xaxis[i], Yaxis[i]], [Xaxis[i + 1], Yaxis[i + 1]]);
-			}
-
-			xVals = xVals.concat(xTemp);
-			yVals = yVals.concat(yTemp);
-		});
-
 		const retTrace = {
 			x: xVals,
 			y: yVals,
@@ -314,6 +269,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			type: 'scatter',
 			mode: 'lines',
 		};
+
+		if(flag)
+		{
+			retTrace.mode = 'markers';
+		}
 
 		return retTrace;
 	};
@@ -332,8 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
 							color: '#000000'
 						}
 					},
-					range: [0, 20],
-					dtick: 5
 				},
 				yaxis: {
 					title: {
@@ -344,8 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
 							color: '#000000'
 						}
 					},
-					range: [1, 2.4],
-					dtick: 0.2
 				}
 			};
 
@@ -375,10 +331,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		};
 		keys = [];
 
-		enabled = [["weight"], ["weight", "mould"], ["weight", "mould"], ["weight", "mould", "soil"], ["soil", "shearBox"], ["soil", "shearBox", "shearDevice"], ["soil", "shearBox", "shearDevice"], ["soil", "shearBox", "shearDevice"], [], []];
+		enabled = [["weight"], ["weight", "mould"], ["weight", "mould"], ["weight", "mould", "soil"], ["soil", "shearBox"], ["soil", "shearBox", "shearDevice"], ["soil", "shearBox", "shearDevice"], ["soil", "shearBox", "shearDevice"], []];
 		step = 0;
 		translate = [0, 0];
 		lim = [-1, -1];
+		flag = false;
 	};
 
 	function restart() 
@@ -401,8 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		let row = thead.insertRow();
 		data.forEach(function(key, ind) {
 			let th = document.createElement("th");
-			let text = document.createTextNode(key);
-			th.appendChild(text);
+			th.innerHTML = key;
 			row.appendChild(th);
 		});
 	};
@@ -412,8 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			let row = table.insertRow();
 			Object.keys(rowVals).forEach(function(key, i) {
 				let cell = row.insertCell();
-				let text = document.createTextNode(rowVals[key]);
-				cell.appendChild(text);
+				cell.innerHTML = rowVals[key];
 			});
 		});
 	};
@@ -496,16 +451,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		"Click the restart button to perform the experiment again.",
 	];
 
+	const normalStress = [1.55, 3.14, 4.69];
 	let diameter, area;
-	let step, translate, lim, objs, keys, enabled, small;
+	let step, translate, lim, objs, keys, enabled, small, flag;
 	init();
 
 	const tableData = [
-		{ "Soil Sample No.": "", "Water Content(%)": "", "Wet Compacted Soil Mass(g)": "", "Wet Density(g/cc)": "", "Dry Density(g/cc)": "" }, 
-		{ "Soil Sample No.": "", "Water Content(%)": "", "Wet Compacted Soil Mass(g)": "", "Wet Density(g/cc)": "", "Dry Density(g/cc)": "" }, 
-		{ "Soil Sample No.": "", "Water Content(%)": "", "Wet Compacted Soil Mass(g)": "", "Wet Density(g/cc)": "", "Dry Density(g/cc)": "" }, 
-		{ "Soil Sample No.": "", "Water Content(%)": "", "Wet Compacted Soil Mass(g)": "", "Wet Density(g/cc)": "", "Dry Density(g/cc)": "" }, 
-		{ "Soil Sample No.": "", "Water Content(%)": "", "Wet Compacted Soil Mass(g)": "", "Wet Density(g/cc)": "", "Dry Density(g/cc)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.025", "Load Dial Reading": "4", "Horizontal Shear Force (N)": "22.86", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.075", "Load Dial Reading": "4.8", "Horizontal Shear Force (N)": "23.93", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.125", "Load Dial Reading": "7.8", "Horizontal Shear Force (N)": "27.8", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.175", "Load Dial Reading": "16.5", "Horizontal Shear Force (N)": "40.03", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.225", "Load Dial Reading": "21", "Horizontal Shear Force (N)": "46.62", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.275", "Load Dial Reading": "23", "Horizontal Shear Force (N)": "47.99", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.325", "Load Dial Reading": "25.5", "Horizontal Shear Force (N)": "51.06", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.375", "Load Dial Reading": "27", "Horizontal Shear Force (N)": "53.29", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
+		{ "Horizontal Displacement (cm)": "0.425", "Load Dial Reading": "27", "Horizontal Shear Force (N)": "52.93", "Shear Stress (N/cm<sup>2</sup>)": "" }, 
 	];
 
 	const objNames = Object.keys(objs);
@@ -514,6 +474,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		obj.addEventListener('click', function(event) {
 			if(elem === "shearBox")
 			{
+				diameter = randomNumber(6, 7);
+				area = (Math.PI * diameter * diameter / 4).toFixed(2);
+				document.getElementById("output3").innerHTML = "Shear Box Diameter = " + String(diameter) + " cm";
+				document.getElementById("output4").innerHTML = "Shear Box Area, A = " + String(area) + " cm" + "2".sup();
+
 				keys = keys.filter(function(val, index) {
 					return val !== "weight" && val !== "mould";
 				});
@@ -559,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	let x = window.matchMedia("(max-width: 1023px)");
 	responsiveTable(x); // Call listener function at run time
-	x.addListener(responsiveTable); // Attach listener function on state changes
+	x.addListener(responsiveTable); // Attach listener function on state changes	
 
 	function draw()
 	{
@@ -598,6 +563,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			updatePos(objs['soil'], translate);
 			step += objs['soil'].heightChange(-translate[1], 50);
 			translate[1] = 0;
+			if(step === 4)
+			{
+				document.getElementById("output2").innerHTML = "Mass of soil = " + String(280) + " g";
+			}
 		}
 
 		if(translate[0] !== 0 || translate[1] !== 0)
@@ -638,6 +607,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		document.getElementById("procedure-message").innerHTML = msgs[step];
+		finish(step);
 		tmHandle = window.setTimeout(draw, 1000 / fps);
 	};
 
