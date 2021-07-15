@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		{
 			flag = true;
 			const retTrace = logic(tableData);
+			document.getElementById("output5").innerHTML = "Normal Stress = " + String(1.55) + "N/cm" + "2".sup();
 			generateTableHead(table, Object.keys(tableData[0]));
 			generateTable(table, tableData);
 			drawGraph([retTrace], ['Horizontal Displacement (cm)', 'Horizontal Shear Stress (N/cm<sup>2</sup>)'], 'plot');
@@ -321,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.getElementById("output2").innerHTML = "Mass of soil = ____ g";
 		document.getElementById("output3").innerHTML = "Shear Box Diameter = ____ cm";
 		document.getElementById("output4").innerHTML = "Shear Box Area, A = ____ cm" + "2".sup();
+		document.getElementById("output5").innerHTML = "Normal Stress = ____ N/cm" + "2".sup(); 
 
 		objs = {
 			"shearDevice": new shearDevice(120, 540, 20, 260, 260),
