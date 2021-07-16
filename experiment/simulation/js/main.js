@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const restartButton = document.getElementById('restart');
 	const instrMsg = document.getElementById('procedure-message');
 
-	restartButton.addEventListener('click', function() {restart();});
+	restartButton.addEventListener('click', restart);
 
 	function randomNumber(min, max) {
 		return Number((Math.random() * (max - min) + min).toFixed(2));
