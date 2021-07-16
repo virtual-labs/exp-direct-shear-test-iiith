@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		draw(ctx) {
 			const boxWidth = 0.1 * this.width, pipeWidth = 0.1 * this.height, baseWidth = 0.025 * this.width, lastSeg  = 0.25 * this.width;
 
-			ctx.fillStyle = "black";
+			ctx.fillStyle = data.colors.black;
 			ctx.beginPath();
 			ctx.rect(this.pos[0], this.pos[1], boxWidth, this.height);
 			ctx.rect(this.pos[0] + this.width - lastSeg, this.pos[1], boxWidth, this.height);
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			ctx.closePath();
 
 			ctx.beginPath();
-			ctx.fillStyle = "white";
+			ctx.fillStyle = data.colors.white;
 			ctx.arc(this.pos[0] + this.width - this.radius, this.pos[1] + this.height / 2, this.radius, 0, 2 * Math.PI);
 			canvas_arrow(ctx, this.pos[0] + this.width - this.radius, this.pos[1] + this.height / 2, this.pos[0] + this.width + this.radius * (Math.cos(this.angle) - 1), this.pos[1] + this.height / 2 + this.radius * Math.sin(this.angle));
 			ctx.moveTo(this.pos[0] + this.width - 2 * this.radius, this.pos[1] + this.height / 2);
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const ctx = canvas.getContext("2d");
 	ctx.lineWidth = 3;
 
-	const border = "black", lineWidth = 3, fps = 150;
+	const border = data.colors.black, lineWidth = 3, fps = 150;
 	const msgs = [
 		"Click on 'Weighing Machine' in the apparatus menu to add a weighing machine to the workspace.", 
 		"Click on 'Mould' in the apparatus menu to add a mould to the workspace.",
