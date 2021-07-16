@@ -1,3 +1,1 @@
-To determine shear strength parameters of the given soil sample by Direct Shear Test.
-
-[Read More](docs/Exp-9 DirectshearTest.pdf)
+To determine the shear strength parameters of a given soil sample by the Direct Shear Test.
