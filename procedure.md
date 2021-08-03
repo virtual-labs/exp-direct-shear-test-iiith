@@ -1,0 +1,10 @@
+1. Add a weighing machine and a mould from the apparatus menu and weigh the mould by clicking on it. Observe the change in the observations menu. The mould is weighed to account for its weight in future measurements of other components added to it.
+2. Add a soil sample from the apparatus menu to the mould directly to weigh them together. Observe the change in the observations menu. We obtain the soil mass by simply subtracting the mass of the mould alone from this mass.
+3. Add an assembled shear box from the apparatus menu. It is assembled by fixing the two boxes (yellow parts) together using screws, adding a porous stone (blue part), adding the soil sample and finally adding another porous stone on the top.
+4. We obtain the dimensions of this box as is visible from the values in the observations menu.
+5. Add a shear device from the apparatus menu and move the shear box to the container by clicking on it. The upper half is brought in contact with the proving ring assembly. Although not shown here, we also apply a normal stress by applying a vertical load on top of the box.
+6. Click on the shear box to start the device and apply a force to shear the soil. The shear load is applied at a constant rate of strain. Observe the changes in the gauge. Note that the simulation exaggerates the amount of shearing the soil goes through for understanding purposes.
+7. The observations are continued until the specimen fails and a slight kickback is observed in the gauge. Observe the readings obtained in the table in the observations menu.
+8. Also observe the graph derived from these readings. We use the shear stress vs horizontal displacement graph to obtain the stress value at failure  which is the peak shear stress. We perform the experiment for different values of normal stress and plot the corresponding values obtained as is visible from the second graph. We have also shown the predicted line as per the formula with the angle of internal friction set to 45<sup>o</sup>. 
+9. Click the restart button to perform the experiment again.
+

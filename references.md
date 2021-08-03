@@ -1,0 +1,4 @@
+- [Cemm Lab - Direct Shear Test](https://cemmlab.webhost.uic.edu/Experiment%2012-Direct%20Shear.pdf)
+- [Direct Shear Test in Lab](https://www.youtube.com/watch?v=vL6-2ytvMBQ)
+- [Animated Shear Test](https://www.youtube.com/watch?v=IqwOOZ4eCT0)
+- Soil Mechanics Laboratory Manual, Braja M. Das

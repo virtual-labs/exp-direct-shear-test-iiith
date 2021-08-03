@@ -1,0 +1,39 @@
+{
+	"version": 2.0,
+	"questions": [
+		{
+			"question": "1. A direct shear test was conducted on a cohesion-less soil (C = 0) specimen under a normal stress (σ) of 200 kN/m<sup>2</sup>. The specimen failed at a shear stress (S) of 100 kN/m<sup>2</sup>. Determine the angle of internal friction of the soil (in degrees).",
+			"answers": {
+				"a": "26.6",
+				"b": "29.5",
+				"c": "30.0",
+				"d": "32.6"
+			},
+			"explanations": {
+				"a": "We rearrange the equation for shear strength to solve for θ as: Angle of internal friction, θ = tan<sup>-1</sup>(S / σ). We ignore C as it is 0.",
+				"b": "We rearrange the equation for shear strength to solve for θ as: Angle of internal friction, θ = tan<sup>-1</sup>(S / σ). We ignore C as it is 0.",
+				"c": "We rearrange the equation for shear strength to solve for θ as: Angle of internal friction, θ = tan<sup>-1</sup>(S / σ). We ignore C as it is 0.",
+				"d": "We rearrange the equation for shear strength to solve for θ as: Angle of internal friction, θ = tan<sup>-1</sup>(S / σ). We ignore C as it is 0."
+			},
+			"difficulty": "advanced",
+			"correctAnswer": "a"
+		},
+		{
+			"question": "2. A direct shear test was conducted on a cohesion less soil (C = 0) specimen under a normal stress (σ) of 96.6 kN/m<sup>2</sup>. The angle of internal friction (θ) of the soil is 35<sup>o</sup>. The specimen fails at a shear stress of ____.",
+			"answers": {
+				"a": "67.7",
+				"b": "96.6",
+				"c": "135.4",
+				"d": "193.2"
+			},
+			"explanations": {
+				"a": "We use the formula: shear strength, S = C + σ * tanθ",
+				"b": "We use the formula: shear strength, S = C + σ * tanθ",
+				"c": "We use the formula: shear strength, S = C + σ * tanθ",
+				"d": "We use the formula: shear strength, S = C + σ * tanθ"
+			},
+			"difficulty": "advanced",
+			"correctAnswer": "a"
+		}
+	]
+}
