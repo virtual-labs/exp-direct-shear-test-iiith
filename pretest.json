@@ -1,0 +1,90 @@
+{
+	"version": 2.0,
+	"questions": [
+		{
+			"question": "1. The direct shear test is ideally suitable for conducting drained tests on which of the following?",
+			"answers": {
+				"a": "Cohesive soils",
+				"b": "Cohesion less soils",
+				"c": "Clayey soils",
+				"d": "Any soil"
+			},
+			"explanations": {
+				"a": "This test can only be performed on sand. The draining of cohesive soils is difficult.",
+				"b": "Only the drained or slow shear test on sand may be carried out using box shear test apparatus. Hence it is applicable for cohesion less soils.",
+				"c": "This test can only be performed on sand. The draining of clayey soils is difficult.",
+				"d": "This test can only be performed on sand. It is difficult to drain any other soils."
+			},
+			"difficulty": "beginner",
+			"correctAnswer": "b"
+		},
+		{
+			"question": "2. The failure plane in direct shear test is ____.",
+			"answers": {
+				"a": "Vertical",
+				"b": "Inclined",
+				"c": "Horizontal",
+				"d": "None of the above"
+			},
+			"explanations": {
+				"a": "The soil sample in the direct shear test is sheared at a constant vertical pressure by control of stress or by control of strain with the application of force in the horizontal direction. Application of direct shear force in the horizontal direction does not allow vertical failure plane.",
+				"b": "The soil sample in the direct shear test is sheared at a constant vertical pressure by control of stress or by control of strain with the application of force in the horizontal direction. Application of direct shear force in the horizontal direction does not allow inclined failure plane.",
+				"c": "The soil sample in the direct shear test is sheared at a constant vertical pressure by control of stress or by control of strain with the application of force in the horizontal direction. Application of direct shear force in the horizontal direction only allows horizontal failure plane.",
+				"d": "One of the other options does contain the right answer."
+			},
+			"difficulty": "beginner",
+			"correctAnswer": "c"
+		},
+		{
+			"question": "3. Direct shear test is also called as ____.",
+			"answers": {
+				"a": "Box shear test",
+				"b": "Vane shear test",
+				"c": "Triaxial shear test",
+				"d": "None of the above"
+			},
+			"explanations": {
+				"a": "It is called so as it makes use of a shear box.",
+				"b": "This is a completely different experiment.",
+				"c": "This is a completely different experiment.",
+				"d": "One of the other options does contain the right answer."
+			},
+			"difficulty": "beginner",
+			"correctAnswer": "a"
+		},
+		{
+			"question": "4. Which of the following is the coulomb equation for shear strength under drained condition?",
+			"answers": {
+				"a": "S = C + σ * tanθ",
+				"b": "S = C - σ * tanθ",
+				"c": "S = C + (σ - u) * tanθ",
+				"d": "S = C - (σ - u) * tanθ"
+			},
+			"explanations": {
+				"a": "This is a standard formula question.",
+				"b": "This is a standard formula question.",
+				"c": "This is a standard formula question.",
+				"d": "This is a standard formula question."
+			},
+			"difficulty": "beginner",
+			"correctAnswer": "a"
+		},
+		{
+			"question": "5. The shear strength of a soil is a function of ____.",
+			"answers": {
+				"a": "Cohesion",
+				"b": "Angle of internal friction",
+				"c": "Normal stress",
+				"d": "All of the above"
+			},
+			"explanations": {
+				"a": "While shear strength does depend on cohesion, this is not the answer.",
+				"b": "While shear strength does depend on angle of internal friction, this is not the answer.",
+				"c": "While shear strength does depend on normal stress, this is not the answer.",
+				"d": "The formula for shear strength is: S = C + σ * tanθ, where C is cohesion, σ is normal stress and θ is the angle of internal friction."
+			},
+			"difficulty": "beginner",
+			"correctAnswer": "d"
+		}
+	]
+}

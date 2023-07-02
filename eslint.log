@@ -1,0 +1,68 @@
+
+/home/runner/work/exp-direct-shear-test-iiith/exp-direct-shear-test-iiith/experiment/simulation/js/main.js
+    6:8    warning  'instrMsg' is assigned a value but never used   no-unused-vars
+   12:3    warning  Unnecessary semicolon                           no-extra-semi
+   35:3    warning  Unnecessary semicolon                           no-extra-semi
+   40:35   warning  'index' is defined but never used               no-unused-vars
+   47:3    warning  Unnecessary semicolon                           no-extra-semi
+   71:3    warning  Unnecessary semicolon                           no-extra-semi
+   77:3    warning  Unnecessary semicolon                           no-extra-semi
+   86:3    warning  Unnecessary semicolon                           no-extra-semi
+   94:4    warning  Unnecessary semicolon                           no-extra-semi
+  103:4    warning  Unnecessary semicolon                           no-extra-semi
+  113:4    warning  Unnecessary semicolon                           no-extra-semi
+  114:3    warning  Unnecessary semicolon                           no-extra-semi
+  125:4    warning  Unnecessary semicolon                           no-extra-semi
+  128:28   warning  'ind' is defined but never used                 no-unused-vars
+  131:4    warning  Unnecessary semicolon                           no-extra-semi
+  132:3    warning  Unnecessary semicolon                           no-extra-semi
+  143:4    warning  Unnecessary semicolon                           no-extra-semi
+  148:20   warning  'data' is not defined                           no-undef
+  157:20   warning  'data' is not defined                           no-undef
+  170:20   warning  'data' is not defined                           no-undef
+  177:4    warning  Unnecessary semicolon                           no-extra-semi
+  189:4    warning  Unnecessary semicolon                           no-extra-semi
+  190:3    warning  Unnecessary semicolon                           no-extra-semi
+  200:4    warning  Unnecessary semicolon                           no-extra-semi
+  204:4    warning  Unnecessary semicolon                           no-extra-semi
+  205:3    warning  Unnecessary semicolon                           no-extra-semi
+  213:4    warning  Unnecessary semicolon                           no-extra-semi
+  217:83   warning  'data' is not defined                           no-undef
+  218:139  warning  'data' is not defined                           no-undef
+  220:20   warning  'data' is not defined                           no-undef
+  233:4    warning  Unnecessary semicolon                           no-extra-semi
+  237:4    warning  Unnecessary semicolon                           no-extra-semi
+  238:3    warning  Unnecessary semicolon                           no-extra-semi
+  251:4    warning  Unnecessary semicolon                           no-extra-semi
+  254:30   warning  'idx' is defined but never used                 no-unused-vars
+  257:4    warning  Unnecessary semicolon                           no-extra-semi
+  261:4    warning  Unnecessary semicolon                           no-extra-semi
+  262:3    warning  Unnecessary semicolon                           no-extra-semi
+  280:3    warning  Unnecessary semicolon                           no-extra-semi
+  310:4    warning  'Plotly' is not defined                         no-undef
+  317:3    warning  Unnecessary semicolon                           no-extra-semi
+  331:41   warning  'data' is not defined                           no-undef
+  332:38   warning  'data' is not defined                           no-undef
+  341:3    warning  Unnecessary semicolon                           no-extra-semi
+  356:3    warning  Unnecessary semicolon                           no-extra-semi
+  361:30   warning  'ind' is defined but never used                 no-unused-vars
+  366:3    warning  Unnecessary semicolon                           no-extra-semi
+  369:34   warning  'ind' is defined but never used                 no-unused-vars
+  371:47   warning  'i' is defined but never used                   no-unused-vars
+  376:3    warning  Unnecessary semicolon                           no-extra-semi
+  390:30   warning  'ind' is defined but never used                 no-unused-vars
+  390:35   warning  'arr' is defined but never used                 no-unused-vars
+  434:3    warning  Unnecessary semicolon                           no-extra-semi
+  443:8    warning  'border' is assigned a value but never used     no-unused-vars
+  443:17   warning  'data' is not defined                           no-undef
+  443:36   warning  'lineWidth' is assigned a value but never used  no-unused-vars
+  474:34   warning  'ind' is defined but never used                 no-unused-vars
+  476:42   warning  'event' is defined but never used               no-unused-vars
+  484:38   warning  'index' is defined but never used               no-unused-vars
+  525:3    warning  Unnecessary semicolon                           no-extra-semi
+  540:35   warning  'ind' is defined but never used                 no-unused-vars
+  614:3    warning  Unnecessary semicolon                           no-extra-semi
+
+✖ 62 problems (0 errors, 62 warnings)
+  0 errors and 37 warnings potentially fixable with the `--fix` option.
+
