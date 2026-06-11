@@ -1,0 +1,158 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. The direct shear test is ideally suitable for conducting drained tests on which of the following?",
+      "answers": {
+        "a": "Cohesive soils",
+        "b": "Cohesionless soils",
+        "c": "Clayey soils",
+        "d": "Saturated silts"
+      },
+      "explanations": {
+        "a": "Incorrect. The rapid drainage required for a 'drained' test is difficult to achieve in cohesive soils like clay within a shear box.",
+        "b": "Correct. The direct shear test is most commonly used for cohesionless soils (sands and gravels) because they drain quickly, allowing for easy determination of the drained shear strength parameters.",
+        "c": "Incorrect. Clayey soils have low permeability, making them unsuitable for the standard rapid direct shear test if drained conditions are required.",
+        "d": "Incorrect. Silts have low permeability and are not the ideal soil type for this specific test compared to sands."
+      },
+      "difficulty": "beginner",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "2. The failure plane in a direct shear test is ____.",
+      "answers": {
+        "a": "Vertical",
+        "b": "Inclined",
+        "c": "Horizontal",
+        "d": "Random"
+      },
+      "explanations": {
+        "a": "Incorrect. The mechanical design of the shear box forces the soil to shear along the split between the two halves.",
+        "b": "Incorrect. Unlike the triaxial test, the direct shear test does not allow the soil to fail along its weakest natural inclined plane.",
+        "c": "Correct. In a direct shear test, the shear box is split horizontally, forcing the failure plane to be horizontal and predetermined.",
+        "d": "Incorrect. The failure plane is strictly defined by the geometry of the apparatus."
+      },
+      "difficulty": "beginner",
+      "correctAnswer": "c"
+    },
+    {
+      "question": "3. Direct shear test is also commonly referred to as the ____.",
+      "answers": {
+        "a": "Box shear test",
+        "b": "Vane shear test",
+        "c": "Triaxial shear test",
+        "d": "Unconfined test"
+      },
+      "explanations": {
+        "a": "Correct. The test is often called the box shear test because the soil specimen is contained within a square or circular metal box split into two halves.",
+        "b": "Incorrect. The vane shear test is a different method used primarily for measuring the undrained shear strength of soft clays.",
+        "c": "Incorrect. The triaxial test is a more complex shear test that allows for control of confining pressures.",
+        "d": "Incorrect. The unconfined compression test is a specific case of the triaxial test with zero confining pressure."
+      },
+      "difficulty": "beginner",
+      "correctAnswer": "a"
+    },
+    {
+      "question": "4. Which of the following represents the Mohr-Coulomb equation for shear strength (s) in terms of cohesion (c), normal stress (σ), and angle of internal friction (φ)?",
+      "answers": {
+        "a": "s = c + σ * tan(φ)",
+        "b": "s = c - σ * tan(φ)",
+        "c": "s = σ + c * tan(φ)",
+        "d": "s = c / (σ * tan(φ))"
+      },
+      "explanations": {
+        "a": "Correct. The Mohr-Coulomb failure criterion states that the shear strength (s) is the sum of the cohesive component (c) and the frictional component (σ * tan(φ)).",
+        "b": "Incorrect. Frictional resistance adds to the strength; it does not subtract from it.",
+        "c": "Incorrect. The normal stress is multiplied by the tangent of the friction angle, not the cohesion.",
+        "d": "Incorrect. The relationship between the components is additive, not a ratio."
+      },
+      "difficulty": "intermediate",
+      "correctAnswer": "a"
+    },
+    {
+      "question": "5. In a direct shear test, the normal stress on the failure plane is ____ during the shearing process.",
+      "answers": {
+        "a": "Variable",
+        "b": "Constant",
+        "c": "Zero",
+        "d": "Increasing linearly"
+      },
+      "explanations": {
+        "a": "Incorrect. The test is specifically designed to measure shear strength under a specific, controlled normal load.",
+        "b": "Correct. In a standard direct shear test, a constant vertical (normal) load is applied to the specimen throughout the duration of the shearing.",
+        "c": "Incorrect. If the normal stress were zero, there would be no frictional resistance to measure.",
+        "d": "Incorrect. The load is held steady to isolate the effect of that specific stress level on the shear resistance."
+      },
+      "difficulty": "intermediate",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "6. One major disadvantage of the direct shear test is:",
+      "answers": {
+        "a": "It is too expensive to perform",
+        "b": "Pore water pressure cannot be measured",
+        "c": "The sample size is too large",
+        "d": "It takes too long to set up"
+      },
+      "explanations": {
+        "a": "Incorrect. The direct shear test is actually relatively inexpensive and simple compared to other shear tests.",
+        "b": "Correct. A significant limitation of the direct shear test is that there is no provision for measuring or controlling the pore water pressure within the specimen.",
+        "c": "Incorrect. The samples used in direct shear tests are typically quite small.",
+        "d": "Incorrect. The setup is generally faster than that of a triaxial test."
+      },
+      "difficulty": "intermediate",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "7. For a purely cohesive soil (like saturated clay in undrained condition), the angle of internal friction (φ) is:",
+      "answers": {
+        "a": "0 degrees",
+        "b": "45 degrees",
+        "c": "90 degrees",
+        "d": "30 degrees"
+      },
+      "explanations": {
+        "a": "Correct. In a 'total stress' analysis of saturated clays under undrained conditions, the soil behaves as if it has no friction, meaning φ = 0.",
+        "b": "Incorrect. A 45-degree friction angle would represent a very high frictional resistance typical of dense gravel.",
+        "c": "Incorrect. A 90-degree angle is physically impossible for soil materials.",
+        "d": "Incorrect. 30 degrees is a common value for sands, but not for purely cohesive undrained clay."
+      },
+      "difficulty": "advanced",
+      "correctAnswer": "a"
+    },
+    {
+      "question": "8. During the shearing of a dense sand in a direct shear test, the volume of the specimen:",
+      "answers": {
+        "a": "Decreases continuously",
+        "b": "Remains constant",
+        "c": "Initially decreases then increases (dilatancy)",
+        "d": "Initially increases then decreases"
+      },
+      "explanations": {
+        "a": "Incorrect. This behavior is typical of loose sands, not dense sands.",
+        "b": "Incorrect. Soils almost always change volume when sheared unless they are at a specific 'critical state'.",
+        "c": "Correct. Dense sands exhibit 'dilatancy', where the particles must roll over each other to shear, causing an overall increase in volume after a small initial compression.",
+        "d": "Incorrect. The expansion (dilation) happens after the initial packing, not the other way around."
+      },
+      "difficulty": "advanced",
+      "correctAnswer": "c"
+    },
+    {
+      "question": "9. If the shear stress at failure is plotted against the normal stress for multiple tests on the same soil, the intercept on the shear stress axis represents:",
+      "answers": {
+        "a": "Angle of internal friction",
+        "b": "Cohesion",
+        "c": "Normal stress",
+        "d": "Pore pressure"
+      },
+      "explanations": {
+        "a": "Incorrect. The angle of internal friction is represented by the slope of the failure envelope.",
+        "b": "Correct. In the Mohr-Coulomb plot (s vs σ), the intercept of the failure envelope on the vertical (shear stress) axis is defined as the cohesion (c) of the soil.",
+        "c": "Incorrect. Normal stress is the independent variable on the horizontal axis.",
+        "d": "Incorrect. Pore pressure is a stress component but not a graphical intercept of the failure envelope."
+      },
+      "difficulty": "advanced",
+      "correctAnswer": "b"
+    }
+  ]
+}

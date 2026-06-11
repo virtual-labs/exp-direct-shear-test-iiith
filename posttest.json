@@ -1,0 +1,158 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. In a direct shear test, the shear stress (τ) is calculated by dividing the shear force (F) by:",
+      "answers": {
+        "a": "The total volume of the specimen",
+        "b": "The area of the cross-section of the specimen",
+        "c": "The height of the specimen",
+        "d": "The normal force applied"
+      },
+      "explanations": {
+        "a": "Incorrect. Stress is defined as force per unit area, not volume.",
+        "b": "Correct. Shear stress is defined as the shear force applied divided by the cross-sectional area of the failure plane (the area of the shear box).",
+        "c": "Incorrect. Dividing force by height does not result in a stress unit.",
+        "d": "Incorrect. Dividing force by force results in a dimensionless ratio, not a stress."
+      },
+      "difficulty": "beginner",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "2. The drainage conditions in a direct shear test can be best described as:",
+      "answers": {
+        "a": "Fully controlled",
+        "b": "Uncontrolled",
+        "c": "Partially controlled by the rate of loading",
+        "d": "Always undrained"
+      },
+      "explanations": {
+        "a": "Incorrect. Unlike the triaxial test, the direct shear box has no valves to fully seal or control drainage.",
+        "b": "Incorrect. While not perfectly controlled, the rate of loading is adjusted to influence the drainage state.",
+        "c": "Correct. Drainage in a direct shear test is influenced by the rate at which the shear force is applied; slower rates allow for more drainage (drained test), while faster rates simulate undrained conditions.",
+        "d": "Incorrect. The test is most commonly used for drained analysis of sands."
+      },
+      "difficulty": "beginner",
+      "correctAnswer": "c"
+    },
+    {
+      "question": "3. The primary reason for performing multiple direct shear tests on the same soil at different normal loads is to:",
+      "answers": {
+        "a": "Ensure the results are repeatable",
+        "b": "Determine the failure envelope and shear strength parameters",
+        "c": "Calculate the water content",
+        "d": "Measure the permeability"
+      },
+      "explanations": {
+        "a": "Incorrect. While repeatability is good, the main purpose is to find the relationship between stress and strength.",
+        "b": "Correct. By testing at different normal stresses, one can plot a series of failure points to define the Mohr-Coulomb failure envelope, from which cohesion (c) and the friction angle (φ) are derived.",
+        "c": "Incorrect. Water content is determined by oven drying, not by shear testing.",
+        "d": "Incorrect. Permeability is measured using constant or falling head tests."
+      },
+      "difficulty": "beginner",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "4. For a dry sand, the cohesion (c) is typically:",
+      "answers": {
+        "a": "Very high",
+        "b": "Zero",
+        "c": "Negative",
+        "d": "Equal to the normal stress"
+      },
+      "explanations": {
+        "a": "Incorrect. High cohesion is characteristic of clays, not dry sands.",
+        "b": "Correct. Dry sands are cohesionless materials, meaning they have no inherent bonding between particles, so c = 0.",
+        "c": "Incorrect. Cohesion is a physical property that cannot be negative.",
+        "d": "Incorrect. Cohesion is an independent material property, not a function of the applied stress."
+      },
+      "difficulty": "intermediate",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "5. Which of the following statements about the failure plane in a direct shear test is true?",
+      "answers": {
+        "a": "It is always the weakest plane in the soil",
+        "b": "It is forced to occur along a horizontal plane",
+        "c": "It is always at an angle of (45 + φ/2) to the horizontal",
+        "d": "It is a vertical plane"
+      },
+      "explanations": {
+        "a": "Incorrect. The forced horizontal plane might not be the weakest plane, which is a limitation of the test.",
+        "b": "Correct. The design of the split shear box forces the failure to occur along the horizontal plane between the two halves of the box.",
+        "c": "Incorrect. This is the theoretical failure angle in a triaxial test, but it is not allowed to develop in a direct shear test.",
+        "d": "Incorrect. The shear force is applied horizontally, creating a horizontal failure plane."
+      },
+      "difficulty": "intermediate",
+      "correctAnswer": "b"
+    },
+    {
+      "question": "6. If a soil specimen in a direct shear test has an area of 36 cm² and fails under a shear force of 180 N, the shear stress at failure is:",
+      "answers": {
+        "a": "5 N/cm²",
+        "b": "0.2 N/cm²",
+        "c": "6480 N/cm²",
+        "d": "10 N/cm²"
+      },
+      "explanations": {
+        "a": "Correct. Shear stress (τ) = Force (F) / Area (A) = 180 N / 36 cm² = 5 N/cm².",
+        "b": "Incorrect. This is the reciprocal of the correct calculation.",
+        "c": "Incorrect. This is the product of force and area, which is not a stress.",
+        "d": "Incorrect. Re-check the division of 180 by 36."
+      },
+      "difficulty": "intermediate",
+      "correctAnswer": "a"
+    },
+    {
+      "question": "7. A direct shear test was conducted on a cohesionless soil (c = 0) specimen under a normal stress of 200 kN/m². The specimen failed at a shear stress of 100 kN/m². Determine the angle of internal friction (φ).",
+      "answers": {
+        "a": "26.6 degrees",
+        "b": "30.0 degrees",
+        "c": "45.0 degrees",
+        "d": "20.5 degrees"
+      },
+      "explanations": {
+        "a": "Correct. For c=0, s = σ * tan(φ). So, 100 = 200 * tan(φ) => tan(φ) = 0.5. φ = arctan(0.5) ≈ 26.56 ≈ 26.6 degrees.",
+        "b": "Incorrect. For φ=30, the shear stress would be 200 * tan(30) ≈ 115.5 kN/m².",
+        "c": "Incorrect. For φ=45, the shear stress would be equal to the normal stress (200 kN/m²).",
+        "d": "Incorrect. Check your trigonometric calculation for the arctan of 0.5."
+      },
+      "difficulty": "advanced",
+      "correctAnswer": "a"
+    },
+    {
+      "question": "8. A direct shear test on a sand specimen yielded an angle of internal friction of 35 degrees. If the normal stress applied is 150 kN/m², and the cohesion is zero, what is the shear strength of the soil?",
+      "answers": {
+        "a": "105.0 kN/m²",
+        "b": "86.0 kN/m²",
+        "c": "122.9 kN/m²",
+        "d": "150.0 kN/m²"
+      },
+      "explanations": {
+        "a": "Incorrect. This is 150 * 0.7 (approx), but tan(35) is roughly 0.7002. Re-calculate.",
+        "b": "Incorrect. This is 150 * sin(35), not tan(35).",
+        "c": "Incorrect. This is 150 * cos(35), not tan(35).",
+        "d": "Incorrect. The shear strength would only equal the normal stress if the friction angle were 45 degrees."
+      },
+      "difficulty": "advanced",
+      "correctAnswer": "a"
+    },
+    {
+      "question": "9. A direct shear test was conducted on a soil with c = 20 kPa and φ = 30 degrees. If the normal stress is 100 kPa, the shear strength is:",
+      "answers": {
+        "a": "77.7 kPa",
+        "b": "57.7 kPa",
+        "c": "120.0 kPa",
+        "d": "100.0 kPa"
+      },
+      "explanations": {
+        "a": "Correct. s = c + σ * tan(φ) = 20 + 100 * tan(30) = 20 + 100 * 0.577 = 20 + 57.7 = 77.7 kPa.",
+        "b": "Incorrect. This value only accounts for the frictional component, neglecting cohesion.",
+        "c": "Incorrect. This is the sum of c and σ, ignoring the friction angle.",
+        "d": "Incorrect. This is just the normal stress value."
+      },
+      "difficulty": "advanced",
+      "correctAnswer": "a"
+    }
+  ]
+}
